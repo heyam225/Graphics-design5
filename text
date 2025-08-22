@@ -1,0 +1,15 @@
+alhayam-design-system/
+├── index.html              # الصفحة الرئيسية
+├── style.css               # تنسيقات الموقع
+├── script.js               # JavaScript للواجهة
+├── process-order.php       # معالجة الطلبات
+├── admin/
+│   ├── login.php          # تسجيل الدخول للإدارة
+│   ├── dashboard.php      # لوحة التحكم
+│   └── manage-orders.php  # إدارة الطلبات
+├── includes/
+│   ├── config.php         # إعدادات الموقع
+│   ├── database.php       # اتصال قاعدة البيانات
+│   └── functions.php      # دوال مساعدة
+├── uploads/               # مجلد الملفات المرفوعة
+└── README.md              # شرح المشروع
