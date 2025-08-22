@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نظام إدارة الطلبات - مؤسسة الهيام لتصميم الجرافكس</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAiIGhlaWdodD0iNTAiIHZpZXdCb3g9IjAgMCA1MCA1MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjUwIiBoZWlnaHQ9IjUwIiByeD0iMTAiIGZpbGw9IiM0QTZDRjciLz4KPHBhdGggZD0iTTE1IDE1SDM1VjM1SDE1VjE1WiIgZmlsbD0id2hpdGUiLz4KPHBhdGggZD0iTTM1IDE1VjM1TDE1IDM1TDM1IDE1WiIgZmlsbD0iI0UxRTZFRSIvPgo8L3N2Zz4K" alt="شعار مؤسسة الهيام">
+                    <h1>مؤسسة الهيام لتصميم الجرافكس</h1>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>٧٧٥٣٢٢٢٤٩ :هاتف</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-credit-card"></i>
+                        <span>11509325 :رقم الحساب</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <ul class="nav-links">
+                <li><a href="#" class="active"><i class="fas fa-home"></i> الرئيسية</a></li>
+                <li><a href="#gallery"><i class="fas fa-palette"></i> معرض الأعمال</a></li>
+                <li><a href="#order-form"><i class="fas fa-file-alt"></i> طلب جديد</a></li>
+                <li><a href="admin/login.php"><i class="fas fa-user-cog"></i> دخول المدير</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="main-content">
+            <!-- Order Form Section -->
+            <div class="card" id="order-form">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="fas fa-plus-circle"></i> تقديم طلب تصميم جديد</h2>
+                </div>
+                
+                <form id="orderForm" action="process-order.php" method="POST" enctype="multipart/form-data">
+                    <div class="form-step active" id="step1">
+                        <h3>اختر نوع التصميم</h3>
+                        <div class="design-type-selector">
+                            <div class="design-type" data-type="شعار">
+                                <i class="fas fa-signature"></i>
+                                <p>تصميم شعار</p>
+                            </div>
+                            <div class="design-type" data-type="بطاقة عمل">
+                                <i class="fas fa-address-card"></i>
+                                <p>بطاقة عمل</p>
+                            </div>
+                            <div class="design-type" data-type="منشور">
+                                <i class="fas fa-newspaper"></i>
+                                <p>منشور وسائل تواصل</p>
+                            </div>
+                            <div class="design-type" data-type="غلاف">
+                                <i class="fas fa-book"></i>
+                                <p>غلاف كتاب</p>
+                            </div>
+                            <div class="design-type" data-type="فلاير">
+                                <i class="fas fa-file-alt"></i>
+                                <p>فلاير / بروشور</p>
+                            </div>
+                            <div class="design-type" data-type="أخرى">
+                                <i class="fas fa-palette"></i>
+                                <p>تصميم آخر</p>
+                            </div>
+                        </div>
+                        <input type="hidden" name="project_type" id="projectType">
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" disabled>السابق</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(1)">التالي</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-step" id="step2">
+                        <h3>أخبرنا عن مشروعك</h3>
+                        <div class="form-group">
+                            <label class="form-label" for="clientName">اسمك</label>
+                            <input type="text" id="clientName" name="client_name" class="form-control" placeholder="أدخل اسمك" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="clientEmail">بريدك الإلكتروني</label>
+                            <input type="email" id="clientEmail" name="client_email" class="form-control" placeholder="أدخل بريدك الإلكتروني" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="clientPhone">رقم هاتفك</label>
+                            <input type="tel" id="clientPhone" name="client_phone" class="form-control" placeholder="أدخل رقم هاتفك" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="projectName">اسم المشروع</label>
+                            <input type="text" id="projectName" name="project_name" class="form-control" placeholder="أدخل اسم المشروع" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="projectDescription">وصف المشروع</label>
+                            <textarea id="projectDescription" name="project_description" class="form-control" rows="4" placeholder="صف مشروعك بالتفصيل..." required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="projectDeadline">الموعد النهائي</label>
+                            <input type="date" id="projectDeadline" name="project_deadline" class="form-control">
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" onclick="prevStep(2)">السابق</button>
+                            <button type="button" class="btn btn-primary" onclick="nextStep(2)">التالي</button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-step" id="step3">
+                        <h3>أرفق ملفاتك</h3>
+                        <div class="file-upload" onclick="document.getElementById('fileInput').click()">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>اسحب وأسقط الملفات هنا أو انقر لاختيار الملفات</p>
+                            <input type="file" id="fileInput" name="project_files[]" multiple style="display: none;" onchange="handleFileSelect(this.files)">
+                        </div>
+                        
+                        <div id="fileList"></div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">ملاحظات إضافية</label>
+                            <textarea class="form-control" name="additional_notes" rows="3" placeholder="أضف أي ملاحظات أو متطلبات إضافية..."></textarea>
+                        </div>
+                        
+                        <div class="form-navigation">
+                            <button type="button" class="btn btn-outline" onclick="prevStep(3)">السابق</button>
+                            <button type="submit" class="btn btn-primary">إرسال الطلب</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Gallery Section -->
+            <div class="card" id="gallery">
+                <div class="card-header">
+                    <h2 class="card-title"><i class="fas fa-images"></i> معرض أعمالنا</h2>
+                </div>
+                <div class="gallery">
+                    <div class="gallery-item">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiM0QTZDRjciLz4KPHJlY3QgeD0iNTAiIHk9IjUwIiB3aWR0aD0iMjAwIiBoZWlnaHQ9IjEwMCIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="تصميم شعار">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiM2Qzc1N0QiLz4KPGNpcmNsZSBjeD0iMTUwIiBjeT0iMTAwIiByPSI1MCIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="تصميم بطاقة عمل">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg�IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiMzQ0IzNzEiLz4KPHBvbHlnb24gcG9pbnRzPSIxNTAsNTAgMjUwLDE1MCAxNTAsMjUwIDUwLDE1MCIgZmlsbD0id2hpdGUiLz4KPC9zdmc+" alt="تصميم منشور">
+                    </div>
+                    <div class="gallery-item">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9IiNGRkMxMDciLz4KPHJlY3QgeD0iNzUiIHk9Ijc1IiB3aWR0aD0iMTUwIiBoZWlnaHQ9IjUwIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4=" alt="تصميم غلاف">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>عن المؤسسة</h3>
+                    <p>مؤسسة الهيام تقدم خدمات تصميم الجرافيكس المحترفة منذ عام 2015، نتميز بالإبداع والجودة في التصاميم.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>معلومات التواصل</h3>
+                    <p><i class="fas fa-phone"></i> هاتف: ٧٧٥٣٢٢٢٤٩</p>
+                    <p><i class="fas fa-envelope"></i> البريد: info@alhayam.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>روابط سريعة</h3>
+                    <p><a href="#gallery">معرض الأعمال</a></p>
+                    <p><a href="#order-form">طلب تصميم</a></p>
+                    <p><a href="admin/login.php">دخول المدير</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>جميع الحقوق محفوظة © مؤسسة الهيام لتصميم الجرافكس 2023</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
